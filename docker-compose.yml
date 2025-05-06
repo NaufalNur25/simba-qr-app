@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  api:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: simba_qr_app
+    ports:
+      - "8888:8888"
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    networks:
+      - simba-network
+    restart: always
+
+networks:
+  simba-network:
+    external: true  
